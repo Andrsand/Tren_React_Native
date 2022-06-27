@@ -13,10 +13,19 @@ export default function App() {
     {text: 'Стать миллионером', index: 4}
   ])
 
+  const addHandler = (text) => {
+    setListOfItems((list) => {
+      return [
+        { text: text, index: 5 },
+        ...list
+      ]
+    })
+  }
+
     return (
         <View>
           <Header />
-          <Form />
+            <Form addHandler={addHandler}/>
           <View>
             <FlatList data={listOfItems} renderItem={({ item }) => (
               <ListItem el={item}/>

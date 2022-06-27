@@ -2,16 +2,17 @@ import React, { useState } from 'react'
 import {StyleSheet, TextInput, Text, Button, View} from 'react-native' //TouchableHighlight - эффект нажатия
 
 
-export default function Form() {
+export default function Form( { addHandler }) {
     const [text, setValue] = useState('');
 
     const onChange = (text) => {
       setValue(text);
-    }
+    };
+
     return (
       <View>
         <TextInput style={styles.input} onChangeText={onChange} placeholder='Создайте задачу...' /> {/*При изменении текста срабатывает функция onChange  */}
-        <Button color='green' onPress={() => addHandler(text)} title='Добавить задачу'/>
+        <Button onPress={() => addHandler(text)} title='Добавить задачу'/>
       </View>  
     );
 }
@@ -25,4 +26,5 @@ const styles = StyleSheet.create({
     marginHorizontal: '20%',
     width: '60%'
   }
+  
 });
