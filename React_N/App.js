@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {StyleSheet, View, Text, FlatList} from 'react-native'
 import Header from './components/Header'
+import ListItem from './components/ListItem'
 
 
 export default function App() {
@@ -16,7 +17,7 @@ export default function App() {
           <Header />
           <View>
             <FlatList data={listOfItems} renderItem={({ item }) => (
-              <Text>{item.text}</Text>
+              <ListItem el={item}/>
             )} />
           </View>
         </View>
