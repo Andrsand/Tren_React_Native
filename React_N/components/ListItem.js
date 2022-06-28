@@ -1,11 +1,12 @@
 import React from 'react'
-import {StyleSheet, TouchableHighlight, Text} from 'react-native' //TouchableHighlight - эффект нажатия
+import {StyleSheet, TouchableOpacity, Text} from 'react-native' // TouchableOpacity - pressing effect
 
-export default function ListItem({ el }) {
+export default function ListItem({ el, deleteHandler }) {
     return (
-      <TouchableHighlight>
+      <TouchableOpacity onPress={() => deleteHandler(el.key)}> {/* when clicked, the deleteHandler function is triggered and the element corresponding to the passed key is deleted
+    */}
         <Text style={styles.text}>{el.text}</Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
 }
 

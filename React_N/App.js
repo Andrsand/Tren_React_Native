@@ -7,19 +7,25 @@ import Form from './components/Form'
 
 export default function App() {
   const [listOfItems, setListOfItems] = useState([
-    {text: 'Купить молоко', index: 1},
-    {text: 'Помыть машину', index: 2},
-    {text: 'Купить картошку', index: 3},
-    {text: 'Стать миллионером', index: 4}
+    {text: 'Купить молоко', key: '1'},
+    {text: 'Помыть машину', key: '2'},
+    {text: 'Купить картошку', key: '3'},
+    {text: 'Стать миллионером', key: '4'}
   ])
 
   const addHandler = (text) => {
     setListOfItems((list) => {
       return [
-        { text: text, index: 5 },
+        { text: text, key: Math.random().toString(36).substring(7) }, //  in key we write a set of random characters, bring them to a string and cut the string to 7 characters.
         ...list
       ]
     })
+  }
+
+  const deleteHandler = (key) => {
+    setListOfItems((list) => {
+      return list.filter(listOfItems => listOfItems.key !=key)
+    });
   }
 
     return (
@@ -28,7 +34,7 @@ export default function App() {
             <Form addHandler={addHandler}/>
           <View>
             <FlatList data={listOfItems} renderItem={({ item }) => (
-              <ListItem el={item}/>
+              <ListItem el={item} deleteHandler = {deleteHandler}/>
             )} />
           </View>
         </View>
