@@ -10,7 +10,8 @@ export default function App() {
     {text: 'Купить молоко', key: '1'},
     {text: 'Помыть машину', key: '2'},
     {text: 'Купить картошку', key: '3'},
-    {text: 'Стать миллионером', key: '4'}
+    {text: 'Стать миллионером', key: '4'},
+    {text: 'Взять кредит', key: '5'}
   ])
 
   const addHandler = (text) => {
