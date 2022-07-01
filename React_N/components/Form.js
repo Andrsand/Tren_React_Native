@@ -11,7 +11,7 @@ export default function Form( { addHandler }) {
 
     return (
       <View>
-        <TextInput style={styles.input} onChangeText={onChange} placeholder='Создайте задачу...' /> {/*При изменении текста срабатывает функция onChange  */}
+        <TextInput style={styles.input} onChangeText={onChange} placeholder='Create a task...' /> {/*При изменении текста срабатывает функция onChange  */}
         <Button onPress={() => addHandler(text)} title='Добавить задачу'/>
       </View>  
     );
