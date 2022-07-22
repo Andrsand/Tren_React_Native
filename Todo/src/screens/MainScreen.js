@@ -4,7 +4,7 @@ import { AddTodo } from '../components/AddTodo'
 import { Todo } from '../components/Todo'
 
 // экспорт константы MainScreen принимающей свойства и возвращающей JSX
-export const MainScreen = ({ addTodo, todos, removeTodo}) => { 
+export const MainScreen = ({ addTodo, todos, removeTodo, openTodo}) => { 
     return (
         <View>
           <AddTodo onSubmit={addTodo} />
@@ -12,7 +12,7 @@ export const MainScreen = ({ addTodo, todos, removeTodo}) => {
           <FlatList 
             keyExtractor={item => item.id.toString()}
             data={todos}
-            renderItem={({item}) => <Todo todo={item} onRemove={removeTodo} />}
+            renderItem={({item}) => <Todo todo={item} onRemove={removeTodo} onOpen={openTodo} />}
           />
           
         </View>
