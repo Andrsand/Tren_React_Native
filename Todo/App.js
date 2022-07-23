@@ -6,8 +6,12 @@ import { TodoScreen } from './src/screens/TodoScreen'
 
 
 export default function App() {
-  const [todoId, setTodoId] = useState(null) // стейт отображения экранов
-  const [todos, setTodos] = useState([]) // стейт
+  const [todoId, setTodoId] = useState('2') // стейт отображения экранов
+  const [todos, setTodos] = useState([       // стейт
+    { id: '1', title: 'Выучить React'},
+    { id:'2', title: 'Написать приложение'}
+  ]) 
+  
 
   const addTodo = (title) => {
     
