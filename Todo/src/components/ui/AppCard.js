@@ -1,8 +1,8 @@
 import React from 'react'
-import {StyleSheet, View} from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 export const AppCard = props => (
-    <View style={{ ...styles.default, ...props.style}}>{props.children}</View>
+    <View style={{ ...styles.default, ...props.style }}>{props.children}</View>
 )
 
 const styles = StyleSheet.create({   

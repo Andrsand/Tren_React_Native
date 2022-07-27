@@ -4,7 +4,7 @@ import {THEME} from '../theme'
 import { AppCard} from '../components/ui/AppCard'
 
 // экспорт константы TodoScreen принимающей свойства и возвращающей JSX
-export const TodoScreen = ({ goBack, todo }) => { 
+export const TodoScreen = ({ goBack, todo, onRemove }) => { 
     return (
       <View>
         <AppCard style={styles.card}>
@@ -20,7 +20,7 @@ export const TodoScreen = ({ goBack, todo }) => {
             <Button
               title='Удалить'
               color={THEME.DANGER_COLOR}
-              onPress={() => console.log('To Remouve')}
+              onPress={() => onRemove(todo.id)}
             />
           </View>
         </View>
