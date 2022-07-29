@@ -3,8 +3,7 @@ import { StyleSheet, View, FlatList } from 'react-native'
 import { AddTodo } from '../components/AddTodo'
 import { Todo } from '../components/Todo'
 
-// экспорт константы MainScreen принимающей свойства и возвращающей JSX
-export const MainScreen = ({ addTodo, todos, removeTodo, openTodo}) => { 
+export const MainScreen = ({ addTodo, todos, removeTodo, openTodo }) => { 
     return (
         <View>
           <AddTodo onSubmit={addTodo} />
