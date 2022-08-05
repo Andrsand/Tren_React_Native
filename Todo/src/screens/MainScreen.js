@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, FlatList, Text, Image } from 'react-native'
+import { StyleSheet, View, FlatList, Image } from 'react-native'
 import { AddTodo } from '../components/AddTodo'
 import { Todo } from '../components/Todo'
 
@@ -21,13 +21,7 @@ export const MainScreen = ({ addTodo, todos, removeTodo, openTodo }) => {
           style={styles.image}
           source={require('../../assets/no-items.png')}
         />
-        {/* <Image
-          style={styles.image}
-          source={{
-            uri:
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png'
-          }}
-        /> */}
+        
       </View>
     )
   }
