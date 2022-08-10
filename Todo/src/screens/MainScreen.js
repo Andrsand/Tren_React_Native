@@ -25,7 +25,7 @@ export const MainScreen = ({ addTodo, todos, removeTodo, openTodo }) => {
 
     )
   let content = (
-    <View style={{ width: deviceWidth }}>
+    <View style={{ width: deviceWidth }}> {/*Dynamically set the width of the View depending on the width of the screen */}
       <FlatList
         keyExtractor={item => item.id.toString()}
         data={todos}
