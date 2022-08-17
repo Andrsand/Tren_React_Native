@@ -1,3 +1,3 @@
 export const todoReducer = (state, action) => {
-   return state
+  return state
 }
