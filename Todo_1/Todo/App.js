@@ -4,6 +4,7 @@ import * as Font from 'expo-font'
 import { AppLoading } from 'expo'
 
 import { TodoState } from './src/context/todo/TodoState'
+import { ScreenState } from './src/context/screen/ScreenState'
 import { MainLayout } from './src/MainLayout'
 
 async function loadApplication() {
@@ -27,8 +28,10 @@ export default function App() {
   // }
 
   return (
-    <TodoState>
-      <MainLayout />
-    </TodoState>
+    <ScreenState>
+      <TodoState>
+        <MainLayout />
+      </TodoState>
+    </ScreenState>
   )
 }
