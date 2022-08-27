@@ -14,8 +14,8 @@ async function loadApplication(){
     'roboto-bold': require('./assets/fonts/Roboto-Bold.ttf')
   })
 }
-
-export default function App() {
+// функция App - по сути представляет собой все наше плиложение.
+export default function App() {              
   const [isReady, setIsReady] = useState(false)
   const [todoId, setTodoId] = useState(null)
   const [todos, setTodos] = useState([
@@ -104,7 +104,7 @@ export default function App() {
     </View>
   )
 }
-
+// const styles - содержит стили для <View style={styles.container}>{content}</View>
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: THEME.PADDING_HORIZONTAL,
