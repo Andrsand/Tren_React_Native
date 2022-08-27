@@ -98,7 +98,7 @@ export default function App() {
   }
 
   return (
-    <View>
+    <View>  
       <Navbar title='Todo App!' />
       <View style={styles.container}>{content}</View>
     </View>
@@ -108,6 +108,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: THEME.PADDING_HORIZONTAL,
-    paddingVertical: 20
+    paddingVertical: 20 // свойства стилей в React Nayive пишут толлько в Сamel Case
   }
 })
