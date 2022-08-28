@@ -6,10 +6,10 @@ import { THEME } from '../theme'
 export const AddTodo = ({ onSubmit }) => {
   const [value, setValue] = useState('')
 
-  const pressHandler = () => {
+  const pressHandler = () => { // функция срабатывающая при нажатии кнопки "Добавить".
     if (value.trim()) {
       onSubmit(value)
-      setValue('')
+      setValue('')              
       Keyboard.dismiss() 
     } else {
       Alert.alert('Название дела не может быть пустым')

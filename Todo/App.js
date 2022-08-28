@@ -18,7 +18,7 @@ async function loadApplication(){
 export default function App() {              
   const [isReady, setIsReady] = useState(false)
   const [todoId, setTodoId] = useState(null)
-  const [todos, setTodos] = useState([
+  const [todos, setTodos] = useState([   /* todos - стейт, setTodos - функция меняющая стейт todos */
     { id: '1', title: 'Доучить React Native' }
   ])
 
@@ -31,12 +31,12 @@ export default function App() {
       ///>
    // )
   //}
-
+  // создание нового элемента задач и добавление в стейт todos.
   const addTodo = title => {  
-    setTodos(prev => [
+    setTodos(prev => [                  // prev - предыдущее состояние
       ...prev,
       {
-        id: Date.now().toString(),  
+        id: Date.now().toString(),  // Новое состояние. Date.now() возвращает число поэтому лучше через toString перевести в строку.
         title
       }
     ])
