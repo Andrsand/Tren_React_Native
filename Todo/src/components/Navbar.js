@@ -3,8 +3,8 @@ import { View, StyleSheet, Platform } from 'react-native'
 import { THEME } from '../theme'
 import { AppTextBold } from './ui/AppTextBold'
 
-export const Navbar = ({ title }) => {
-  return (
+export const Navbar = ({ title }) => { // именованная констата для экспорта в другие файлы
+  return (                             // в props этой конствнты находится объект с ключом title. Альтенативный синтаксис ....(props) .... {props.title}....
     <View 
       style={{
         ...styles.navbar, 
@@ -13,7 +13,7 @@ export const Navbar = ({ title }) => {
           android: styles.navbarAndroid
         })
       }}
-    >
+     >
       <AppTextBold style={styles.text}>{title}</AppTextBold>
     </View>
   )

@@ -3,7 +3,7 @@ import { StyleSheet, View, Alert } from 'react-native'
 import * as Font from 'expo-font'
 import { AppLoading } from 'expo' 
 
-import { Navbar } from './src/components/Navbar'
+import { Navbar } from './src/components/Navbar' // импорт компонента Navbar
 import { MainScreen } from './src/screens/MainScreen'
 import { TodoScreen } from './src/screens/TodoScreen'
 import { THEME } from './src/theme'
@@ -99,7 +99,7 @@ export default function App() {
 
   return (
     <View>  
-      <Navbar title='Todo App!' />
+      <Navbar title='Todo App!' /> {/* компонент Navbar */}
       <View style={styles.container}>{content}</View>
     </View>
   )
