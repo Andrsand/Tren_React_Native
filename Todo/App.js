@@ -32,11 +32,11 @@ export default function App() {
    // )
   //}
 
-  const addTodo = title => {
+  const addTodo = title => {  
     setTodos(prev => [
       ...prev,
       {
-        id: Date.now().toString(),
+        id: Date.now().toString(),  
         title
       }
     ])

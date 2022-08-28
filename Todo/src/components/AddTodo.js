@@ -16,10 +16,10 @@ export const AddTodo = ({ onSubmit }) => {
     }
   }
 
-  return (
+  return (                           // возвращаем JSX
     <View style={styles.block}>
       <TextInput
-        style={styles.input}
+        style={styles.input}  
         onChangeText={setValue}
         value={value}
         placeholder='Введите название дела...'
