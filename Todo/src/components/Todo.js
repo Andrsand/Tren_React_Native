@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import { AppText } from '../components/ui/AppText'
 
-export const Todo = ({ todo, onRemove, onOpen }) => {
+export const Todo = ({ todo, onRemove, onOpen }) => { // компонент Todo для отображения элемента списка задач
   return (
     <TouchableOpacity
       activeOpacity={0.5}
