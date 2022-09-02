@@ -1,33 +1,33 @@
 import React, { useState } from 'react'
 import { View, StyleSheet, TextInput, Button, Alert, Keyboard } from 'react-native'
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
 import { THEME } from '../theme'
 
 export const AddTodo = ({ onSubmit }) => {
   const [value, setValue] = useState('')
 
   const pressHandler = () => { // функция срабатывающая при нажатии кнопки "Добавить".
-    if (value.trim()) {
-      onSubmit(value)
-      setValue('')              
-      Keyboard.dismiss() 
-    } else {
+    if (value.trim()) {        // если TextInput не пустой ( и не содержит пробелы которые очищаются trim) тогда выполняем логику далее 
+      onSubmit(value)          // при нажатии конопки "добавить" отправляется значение value
+      setValue('')             // и setValue очищает TextImput 
+      Keyboard.dismiss()
+    } else {                   // иначе, если пустая строка - тогда показываем Alert с предупреждением...
       Alert.alert('Название дела не может быть пустым')
     }
   }
 
   return (                           // возвращаем JSX
     <View style={styles.block}>
-      <TextInput
-        style={styles.input}  
-        onChangeText={setValue}
+      <TextInput                     // TextInput с параметрами
+        style={styles.input}
+        onChangeText={setValue}      // При изменении текста в setValue передается текст из TextImput
         value={value}
         placeholder='Введите название дела...'
         autoCorrect={false}
         autoCapitalize='none'
       />
       <AntDesign.Button onPress={pressHandler} name='pluscircleo'>
-        Добавить         
+        Добавить
 
       </AntDesign.Button>
       {/*<Button title='Добавить' onPress={pressHandler} />*/}
