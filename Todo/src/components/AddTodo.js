@@ -23,8 +23,8 @@ export const AddTodo = ({ onSubmit }) => {
         onChangeText={setValue}      // При изменении текста в setValue передается текст из TextImput
         value={value}
         placeholder='Введите название дела...'
-        autoCorrect={false}
-        autoCapitalize='none'
+        autoCorrect={false}          // Автоматическое исправление ошибок
+        autoCapitalize='none'        // 'none' - выключает автоматическое начало с большой буквы.
       />
       <AntDesign.Button onPress={pressHandler} name='pluscircleo'>
         Добавить
