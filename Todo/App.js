@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Alert } from 'react-native'
 import * as Font from 'expo-font'
-import { AppLoading } from 'expo' 
+import { AppLoading } from 'expo'
 
 import { Navbar } from './src/components/Navbar' // импорт компонента Navbar
 import { MainScreen } from './src/screens/MainScreen'
 import { TodoScreen } from './src/screens/TodoScreen'
 import { THEME } from './src/theme'
-  
-async function loadApplication(){
+
+async function loadApplication() {
   await Font.loadAsync({
     'roboto-regular': require('./assets/fonts/Roboto-Regular.ttf'),
     'roboto-bold': require('./assets/fonts/Roboto-Bold.ttf')
   })
 }
 // функция App - по сути представляет собой все наше плиложение.
-export default function App() {              
+export default function App() {
   const [isReady, setIsReady] = useState(false)
   const [todoId, setTodoId] = useState(null)
   const [todos, setTodos] = useState([   /* todos - стейт, setTodos - функция меняющая стейт todos */
@@ -23,16 +23,16 @@ export default function App() {
   ])
 
   //if (!isReady){
-    //return (
-      //<AppLoading
-        //startAsync={loadApplication} 
-        //onError={err => console.log(err)}
-       // onFinish={() => setIsReady(true)}
-      ///>
-   // )
+  //return (
+  //<AppLoading
+  //startAsync={loadApplication} 
+  //onError={err => console.log(err)}
+  // onFinish={() => setIsReady(true)}
+  ///>
+  // )
   //}
   // создание нового элемента задач и добавление в стейт todos.
-  const addTodo = title => {  
+  const addTodo = title => {
     setTodos(prev => [                  // prev - предыдущее состояние
       ...prev,
       {
@@ -42,7 +42,7 @@ export default function App() {
     ])
   }
 
-  const removeTodo = id => {
+  const removeTodo = id => {         // Функция удаления передаваемая для каждого элемента todo
     const todo = todos.find(t => t.id === id)
     Alert.alert(
       'Удаление элемента',
@@ -57,7 +57,7 @@ export default function App() {
           style: 'destructive',
           onPress: () => {
             setTodoId(null)
-            setTodos(prev => prev.filter(todo => todo.id !== id))
+            setTodos(prev => prev.filter(todo => todo.id !== id)) // метод массива - filter - удаляет элемент из массива. Оставить элемент если todо.id не равно id
           }
         }
       ],
@@ -80,7 +80,7 @@ export default function App() {
     <MainScreen
       todos={todos}
       addTodo={addTodo}
-      removeTodo={removeTodo}
+      removeTodo={removeTodo}                        // референс до метода removeTodo
       openTodo={setTodoId}
     />
   )
@@ -98,7 +98,7 @@ export default function App() {
   }
 
   return (
-    <View>  
+    <View>
       <Navbar title='Todo App!' /> {/* компонент Navbar */}
       <View style={styles.container}>{content}</View>
     </View>
