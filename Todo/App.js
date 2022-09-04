@@ -17,7 +17,7 @@ async function loadApplication() {
 // функция App - по сути представляет собой все наше плиложение.
 export default function App() {
   const [isReady, setIsReady] = useState(false)
-  const [todoId, setTodoId] = useState(null)
+  const [todoId, setTodoId] = useState(null)      // стейт отвечающий за отображение какого либо экрана. При клике на элемент мы меняем в стейте id и если он != null то отображаем другой экран.
   const [todos, setTodos] = useState([   /* todos - стейт, setTodos - функция меняющая стейт todos. Это стейт для переключения MainScreen.js и TodoScreen.js*/
     { id: '1', title: 'Доучить React Native' } // 
   ])
@@ -75,7 +75,7 @@ export default function App() {
       })
     )
   }
-
+  // Переменная content - по умолчанию = главному экрану. 
   let content = (
     <MainScreen
       todos={todos}
@@ -85,11 +85,11 @@ export default function App() {
     />
   )
 
-  if (todoId) {
+  if (todoId) {                  // Если todoId != null тогда в переменную content передаем компонент TodoScreen.
     const selectedTodo = todos.find(todo => todo.id === todoId)
     content = (
       <TodoScreen
-        onRemove={removeTodo}
+        onRemove={removeTodo}           // так передаются свойства в компонент. Параметры могут содержать различные типы данных.
         goBack={() => setTodoId(null)}
         todo={selectedTodo}
         onSave={updateTodo}

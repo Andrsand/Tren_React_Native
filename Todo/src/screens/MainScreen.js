@@ -1,36 +1,36 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, FlatList, Image, Dimensions } from 'react-native'
 import { AddTodo } from '../components/AddTodo'
 import { Todo } from '../components/Todo'
 import { THEME } from '../theme'
 
-export const MainScreen = ({ addTodo, todos, removeTodo, openTodo }) => {
-  const [deviceWidth, setDeviceWidth] = useState (
+export const MainScreen = ({ addTodo, todos, removeTodo, openTodo }) => {  // В параметрах: функция addTodo, массив todos из App.js и тд.
+  const [deviceWidth, setDeviceWidth] = useState(
     Dimensions.get('window').width - THEME.PADDING_HORIZONTAL * 2
-    )
-    
-    useEffect(() => {
-      const update = () => {
-        const width = 
-          Dimensions.get('window').width - THEME.PADDING_HORIZONTAL * 2
-        setDeviceWidth(width)
-      }
+  )
 
-      Dimensions.addEventListener('change', update)
-
-      return () => {
-        Dimensions.removeEventListener('change', update)
-      }
+  useEffect(() => {
+    const update = () => {
+      const width =
+        Dimensions.get('window').width - THEME.PADDING_HORIZONTAL * 2
+      setDeviceWidth(width)
     }
 
-    )
+    Dimensions.addEventListener('change', update)
+
+    return () => {
+      Dimensions.removeEventListener('change', update)
+    }
+  }
+
+  )
   let content = (
     <View style={{ width: deviceWidth }}> {/*Dynamically set the width of the View depending on the width of the screen */}
       <FlatList
         keyExtractor={item => item.id.toString()}
         data={todos}
         renderItem={({ item }) => (
-        <Todo todo={item} onRemove={removeTodo} onOpen={openTodo} />
+          <Todo todo={item} onRemove={removeTodo} onOpen={openTodo} />
         )}
       />
     </View>
@@ -43,7 +43,7 @@ export const MainScreen = ({ addTodo, todos, removeTodo, openTodo }) => {
           style={styles.image}
           source={require('../../assets/no-items.png')}
         />
-        
+
       </View>
     )
   }
