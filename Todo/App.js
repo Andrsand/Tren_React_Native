@@ -18,8 +18,8 @@ async function loadApplication() {
 export default function App() {
   const [isReady, setIsReady] = useState(false)
   const [todoId, setTodoId] = useState(null)
-  const [todos, setTodos] = useState([   /* todos - стейт, setTodos - функция меняющая стейт todos */
-    { id: '1', title: 'Доучить React Native' }
+  const [todos, setTodos] = useState([   /* todos - стейт, setTodos - функция меняющая стейт todos. Это стейт для переключения MainScreen.js и TodoScreen.js*/
+    { id: '1', title: 'Доучить React Native' } // 
   ])
 
   //if (!isReady){
