@@ -47,6 +47,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderStyle: 'solid',
     borderBottomWidth: 2,
-    borderBottomColor: THEME.MAIN_COLOR
+    borderBottomColor: THEME.MAIN_COLOR                        /* импорт цвета из константы THEME theme.js */
   }
 })

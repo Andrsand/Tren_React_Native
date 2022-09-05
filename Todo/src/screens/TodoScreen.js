@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Button, Dimensions } from 'react-native'
 import { FontAwesome, AntDesign } from '@expo/vector-icons'
-import { THEME } from '../theme'
+import { THEME } from '../theme'                                       // экспорт константы цветов темы из theme.js
 import { AppCard } from '../components/ui/AppCard'
 import { EditModal } from '../components/EditModal'
 import { AppTextBold } from '../components/ui/AppTextBold'
@@ -24,7 +24,7 @@ export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => {
         onSave={saveHandler}
       />
 
-      <AppCard style={styles.card}>
+      <AppCard style={styles.card}>                                 {/* это стилевая оболочка из файла AppCard.js в которую мы обернули наши элементы */}
         <AppTextBold style={styles.title}>{todo.title}</AppTextBold>
         <AppButton onPress={() => setModal(true)}>
           <FontAwesome name='edit' size={20} />
@@ -33,13 +33,13 @@ export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => {
 
       <View style={styles.buttons}>
         <View style={styles.button}>
-          <AppButton onPress={goBack} color={THEME.GREY_COLOR}>
+          <AppButton onPress={goBack} color={THEME.GREY_COLOR}>   {/* импорт цвета из константы THEME theme.js */}
             <AntDesign name='back' size={20} color='#fff' />
           </AppButton>
         </View>
         <View style={styles.button}>
           <AppButton
-            color={THEME.DANGER_COLOR}
+            color={THEME.DANGER_COLOR}                             /* импорт цвета из константы THEME theme.js */
             onPress={() => onRemove(todo.id)}
           >
             <FontAwesome name='remove' size={20} color='#fff' />
