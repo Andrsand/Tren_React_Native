@@ -4,6 +4,8 @@ import { AddTodo } from '../components/AddTodo'
 import { Todo } from '../components/Todo'
 import { THEME } from '../theme'
 
+// MainScreen - компенент отображающий главный экран.
+// Переключение экранов происходит, когда мы нажимаем на какой либо компонент todo.
 export const MainScreen = ({ addTodo, todos, removeTodo, openTodo }) => {  // В параметрах: функция addTodo, массив todos из App.js и тд.
   const [deviceWidth, setDeviceWidth] = useState(
     Dimensions.get('window').width - THEME.PADDING_HORIZONTAL * 2
@@ -30,7 +32,7 @@ export const MainScreen = ({ addTodo, todos, removeTodo, openTodo }) => {  // В
         keyExtractor={item => item.id.toString()}
         data={todos}
         renderItem={({ item }) => (
-          <Todo todo={item} onRemove={removeTodo} onOpen={openTodo} />
+          <Todo todo={item} onRemove={removeTodo} onOpen={openTodo} /> // полученные от родителя параметры записываем в свойства Todo
         )}
       />
     </View>

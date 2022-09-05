@@ -76,16 +76,17 @@ export default function App() {
     )
   }
   // Переменная content - по умолчанию = главному экрану. 
+  // В MainScreen.js передаем следующие функции из данного файла App.js
   let content = (
     <MainScreen
       todos={todos}
       addTodo={addTodo}
       removeTodo={removeTodo}                        // референс до метода removeTodo
-      openTodo={setTodoId}
+      openTodo={setTodoId}                           // из стейта setTodoId получаем тот id который нам нужно открыть
     />
   )
 
-  if (todoId) {                  // Если todoId != null тогда в переменную content передаем компонент TodoScreen.
+  if (todoId) {                  // Если todoId != null т.е изменяется стейт setTodoId, тогда в переменную content передаем компонент TodoScreen.
     const selectedTodo = todos.find(todo => todo.id === todoId)
     content = (
       <TodoScreen
