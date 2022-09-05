@@ -18,7 +18,7 @@ export const AddTodo = ({ onSubmit }) => {
 
   return (                           // возвращаем JSX
     <View style={styles.block}>
-      <TextInput                     // TextInput с параметрами
+      <TextInput                     // TextInput с параметрами:
         style={styles.input}
         onChangeText={setValue}      // При изменении текста в setValue передается текст из TextImput
         value={value}

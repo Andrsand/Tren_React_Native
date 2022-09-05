@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Alert } from 'react-native'
+import { StyleSheet, View, Alert, Text } from 'react-native'
 import * as Font from 'expo-font'
 import { AppLoading } from 'expo'
 
@@ -19,18 +19,18 @@ export default function App() {
   const [isReady, setIsReady] = useState(false)
   const [todoId, setTodoId] = useState(null)      // стейт отвечающий за отображение какого либо экрана. При клике на элемент мы меняем в стейте id и если он != null то отображаем другой экран.
   const [todos, setTodos] = useState([   /* todos - стейт, setTodos - функция меняющая стейт todos. Это стейт для переключения MainScreen.js и TodoScreen.js*/
-    { id: '1', title: 'Доучить React Native' } // 
+    { id: '1', title: 'Доучить React Native' }
   ])
 
-  //if (!isReady){
-  //return (
-  //<AppLoading
-  //startAsync={loadApplication} 
-  //onError={err => console.log(err)}
-  // onFinish={() => setIsReady(true)}
-  ///>
-  // )
-  //}
+  // if (!isReady) {
+  //   return (
+  //     <AppLoading
+  //       startAsync={loadApplication}
+  //       onError={err => console.log(err)}
+  //       onFinish={() => setIsReady(true)}
+  //     />
+  //   )
+  // }
   // создание нового элемента задач и добавление в стейт todos.
   const addTodo = title => {
     setTodos(prev => [                  // prev - предыдущее состояние
@@ -87,11 +87,11 @@ export default function App() {
   )
 
   if (todoId) {                  // Если todoId != null т.е изменяется стейт setTodoId, тогда в переменную content передаем компонент TodoScreen.
-    const selectedTodo = todos.find(todo => todo.id === todoId)
+    const selectedTodo = todos.find(todo => todo.id === todoId) //метод find ищет todo который находится в массиве todos и затем сравниваем id найденного todo со значением todoId. И тогда в selectedTodo попадает тот todo у которого id === выбранному.
     content = (
       <TodoScreen
         onRemove={removeTodo}           // так передаются свойства в компонент. Параметры могут содержать различные типы данных.
-        goBack={() => setTodoId(null)}
+        goBack={() => setTodoId(null)}  // передача функции goBack в компонент TodoScreen.js и задаем стейту todoId значение null, что бы рендерился MainScreen.
         todo={selectedTodo}
         onSave={updateTodo}
       />
