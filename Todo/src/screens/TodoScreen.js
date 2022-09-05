@@ -16,7 +16,7 @@ export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => {
   }
 
   return (
-    <View>
+    <View>                                  {/* корневой элемент view*/}
       <EditModal
         value={todo.title}
         visible={modal}
@@ -52,15 +52,15 @@ export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => {
 
 const styles = StyleSheet.create({
   buttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    flexDirection: 'row',                       // кнопки расположены по горизонтали а не одна под другой
+    justifyContent: 'space-between'             // задает пространство между кнопками
   },
   card: {
     marginBottom: 20,
     padding: 15
   },
   button: {
-  //width: Dimensions.get('window').width / 3
+    //width: Dimensions.get('window').width / 3
     width: Dimensions.get('window').width > 400 ? 150 : 100
   },
   title: {
