@@ -1,3 +1,5 @@
+// Главный экран
+
 import React, { useState } from 'react'
 import { StyleSheet, View, Button, Dimensions } from 'react-native'
 import { FontAwesome, AntDesign } from '@expo/vector-icons'
@@ -8,19 +10,19 @@ import { AppTextBold } from '../components/ui/AppTextBold'
 import { AppButton } from '../components/ui/AppButton'
 
 export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => { // свойство onRemoove получаем из App.js
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(false)                         // стейт отвечающий за видимость модального окна. По умолчанию оно не видно. 
 
   const saveHandler = title => {
     onSave(todo.id, title)
     setModal(false)
   }
 
-  return (
+  return (                                  // рендерим компонент EditModal из EditModal.js
     <View>                                  {/* корневой элемент view*/}
       <EditModal
         value={todo.title}
-        visible={modal}
-        onCancel={() => setModal(false)}
+        visible={modal}                     // параметр visible совпадающий со стейтом modal ↑
+        onCancel={() => setModal(false)}    // метод onCancel из файла EditModal.js
         onSave={saveHandler}
       />
 

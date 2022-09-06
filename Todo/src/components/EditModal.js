@@ -1,3 +1,5 @@
+// Модальное окно позволяет редактировать существующее уже название todo.
+
 import React, { useState } from 'react'
 import { View, StyleSheet, TextInput, Button, Modal, Alert } from 'react-native'
 import { THEME } from '../theme'
@@ -10,8 +12,7 @@ export const EditModal = ({ visible, onCancel, value, onSave }) => {
     if (title.trim().length < 3) {
       Alert.alert(
         'Ошибка!',
-        `Минимальная длинна названия 3 символа. Сейчас ${
-          title.trim().length
+        `Минимальная длинна названия 3 символа. Сейчас ${title.trim().length
         } символов.`
       )
     } else {
@@ -20,9 +21,9 @@ export const EditModal = ({ visible, onCancel, value, onSave }) => {
   }
 
   return (
-    <Modal visible={visible} animationType='slide' transparent={false}>
+    <Modal visible={visible} animationType='slide' transparent={false}>  {/* параметр visible получен от родительского стейта (вверху), параметры animationType и transparent - из документации React Native*/}
       <View style={styles.wrap}>
-        <TextInput
+        <TextInput                         // input содержащий название элемента по которому мы кликнули для редактирования
           value={title}
           onChangeText={setTitle}
           style={styles.input}
@@ -32,7 +33,7 @@ export const EditModal = ({ visible, onCancel, value, onSave }) => {
           maxLength={64}
         />
         <View style={styles.buttons}>
-          <AppButton onPress={onCancel} color={THEME.DANGER_COLOR}>
+          <AppButton onPress={onCancel} color={THEME.DANGER_COLOR}>  {/* при нажатии вызываем функцию onCancel закрывающую модальное окно изменив стейт в главном экране */}
             Отменить
           </AppButton>
           <AppButton onPress={saveHandler}>Сохранить</AppButton>
