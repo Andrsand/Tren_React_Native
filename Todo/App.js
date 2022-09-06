@@ -43,26 +43,26 @@ export default function App() {
   }
 
   const removeTodo = id => {         // Функция удаления передаваемая для каждого элемента todo
-    const todo = todos.find(t => t.id === id)
-    Alert.alert(
-      'Удаление элемента',
-      `Вы уверены, что хотите удалить "${todo.title}"?`,
-      [
-        {
-          text: 'Отмена',
-          style: 'cancel'
-        },
-        {
-          text: 'Удалить',
-          style: 'destructive',
-          onPress: () => {
-            setTodoId(null)
-            setTodos(prev => prev.filter(todo => todo.id !== id)) // метод массива - filter - удаляет элемент из массива. Оставить элемент если todо.id не равно id
+    const todo = todos.find(t => t.id === id) // перед показом Alert обращаемся к стейту todos и получаем из него по id нужный элемент. //*! непонятно откуда берется id для сравнения с теми id, что в массиве todos? */
+    'Удаление элемента',
+      Alert.alert(
+        `Вы уверены, что хотите удалить "${todo.title}"?`,
+        [
+          {
+            text: 'Отмена',
+            style: 'cancel'        // стиль для кнопки удалить. описан в документации
+          },
+          {
+            text: 'Удалить',
+            style: 'destructive', // стиль для кнопки удалить. описан в документации
+            onPress: () => {                                // если нажата кнопка "удалить" то стейт изменяется
+              setTodoId(null)     // когда мы удаляем какой либо элемент, нам нужно вернуться на главный экран вызвав setTodoId со значением - null
+              setTodos(prev => prev.filter(todo => todo.id !== id)) // метод массива - filter - удаляет элемент из массива. Оставить элемент если todо.id не равно id
+            }
           }
-        }
-      ],
-      { cancelable: false }
-    )
+        ],
+        { cancelable: false }
+      )
   }
 
   const updateTodo = (id, title) => {
@@ -90,7 +90,7 @@ export default function App() {
     const selectedTodo = todos.find(todo => todo.id === todoId) //метод find ищет todo который находится в массиве todos и затем сравниваем id найденного todo со значением todoId. И тогда в selectedTodo попадает тот todo у которого id === выбранному.
     content = (
       <TodoScreen
-        onRemove={removeTodo}           // так передаются свойства в компонент. Параметры могут содержать различные типы данных.
+        onRemove={removeTodo}           // Передаем в свойство ранее (выше) написанную функцию removeTodo. так передаются свойства в компонент. Параметры могут содержать различные типы данных. Свойство onRemove передаем в файл-компонент TodoScreen
         goBack={() => setTodoId(null)}  // передача функции goBack в компонент TodoScreen.js и задаем стейту todoId значение null, что бы рендерился MainScreen.
         todo={selectedTodo}
         onSave={updateTodo}

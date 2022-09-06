@@ -7,7 +7,7 @@ import { EditModal } from '../components/EditModal'
 import { AppTextBold } from '../components/ui/AppTextBold'
 import { AppButton } from '../components/ui/AppButton'
 
-export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => {
+export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => { // свойство onRemoove получаем из App.js
   const [modal, setModal] = useState(false)
 
   const saveHandler = title => {
@@ -40,7 +40,7 @@ export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => {
         <View style={styles.button}>
           <AppButton
             color={THEME.DANGER_COLOR}                             /* импорт цвета из константы THEME theme.js */
-            onPress={() => onRemove(todo.id)}
+            onPress={() => onRemove(todo.id)}            // при нажатии на кнопку вызываем функуию onRemove и передаем в нее полученный из todo - id. 
           >
             <FontAwesome name='remove' size={20} color='#fff' />
           </AppButton>
