@@ -12,9 +12,9 @@ import { AppButton } from '../components/ui/AppButton'
 export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => { // свойство onRemoove получаем из App.js
   const [modal, setModal] = useState(false)                         // стейт отвечающий за видимость модального окна. По умолчанию оно не видно. 
 
-  const saveHandler = title => {
-    onSave(todo.id, title)
-    setModal(false)
+  const saveHandler = title => { // функция позволяет получить нужный id. Передаем эту функцию в модальное окно EditModal ￬
+    onSave(todo.id, title)       // вызываем метод onSave который приходит из App.js
+    setModal(false)              // и сразу закрываем модальное окно вызвав метод setModal со значением false
   }
 
   return (                                  // рендерим компонент EditModal из EditModal.js
@@ -23,7 +23,7 @@ export const TodoScreen = ({ goBack, todo, onRemove, onSave }) => { // свой�
         value={todo.title}
         visible={modal}                     // параметр visible совпадающий со стейтом modal ↑
         onCancel={() => setModal(false)}    // метод onCancel из файла EditModal.js
-        onSave={saveHandler}
+        onSave={saveHandler}                // передаем в EditModal.js метод jnSave с функцией on Save ￪
       />
 
       <AppCard style={styles.card}>                                 {/* это стилевая оболочка из файла AppCard.js в которую мы обернули наши элементы */}

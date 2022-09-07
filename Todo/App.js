@@ -67,11 +67,11 @@ export default function App() {
 
   const updateTodo = (id, title) => {
     setTodos(old =>
-      old.map(todo => {
-        if (todo.id === id) {
-          todo.title = title
+      old.map(todo => {            // на каждой итерации принимаем объект todo и сравниваем:
+        if (todo.id === id) {      // если todo.id === id переданному нами из скрина - то мы точно работаем с тем todo которое хотели изменить.
+          todo.title = title       // поэтому говоримЁ что todo.title будет равен title из модального окна. 
         }
-        return todo
+        return todo                // на каждой итерации мы всеравно вернем todo но если id совпадают, то мы изменим нужный todo. 
       })
     )
   }
@@ -93,7 +93,7 @@ export default function App() {
         onRemove={removeTodo}           // Передаем в свойство ранее (выше) написанную функцию removeTodo. так передаются свойства в компонент. Параметры могут содержать различные типы данных. Свойство onRemove передаем в файл-компонент TodoScreen
         goBack={() => setTodoId(null)}  // передача функции goBack в компонент TodoScreen.js и задаем стейту todoId значение null, что бы рендерился MainScreen.
         todo={selectedTodo}
-        onSave={updateTodo}
+        onSave={updateTodo}             // передаем в TodoScreen.js метод onSave c функцией updateTodo
       />
     )
   }

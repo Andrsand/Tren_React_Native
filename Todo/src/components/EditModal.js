@@ -6,9 +6,9 @@ import { THEME } from '../theme'
 import { AppButton } from './ui/AppButton'
 
 export const EditModal = ({ visible, onCancel, value, onSave }) => {
-  const [title, setTitle] = useState(value)
+  const [title, setTitle] = useState(value)         // локальный стейт для изменения названия элемента
 
-  const saveHandler = () => {
+  const saveHandler = () => {         // валицация. Если title меньше трех символов, возвращаем alert иначе - сохраняем.
     if (title.trim().length < 3) {
       Alert.alert(
         'Ошибка!',
@@ -16,11 +16,11 @@ export const EditModal = ({ visible, onCancel, value, onSave }) => {
         } символов.`
       )
     } else {
-      onSave(title)
+      onSave(title) // Принимаем функцию onSave с параметром title
     }
   }
 
-  return (
+  return (                  // здесь мы регулируем локальный стейт модального окна, чтобы менять значение value в const EditModal ￪
     <Modal visible={visible} animationType='slide' transparent={false}>  {/* параметр visible получен от родительского стейта (вверху), параметры animationType и transparent - из документации React Native*/}
       <View style={styles.wrap}>
         <TextInput                         // input содержащий название элемента по которому мы кликнули для редактирования
@@ -32,8 +32,8 @@ export const EditModal = ({ visible, onCancel, value, onSave }) => {
           autoCorrect={false}
           maxLength={64}
         />
-        <View style={styles.buttons}>
-          <AppButton onPress={onCancel} color={THEME.DANGER_COLOR}>  {/* при нажатии вызываем функцию onCancel закрывающую модальное окно изменив стейт в главном экране */}
+        <View style={styles.buttons}> {/* если нажимаем на кнопку “Сохоранить” то передаем это значение а если на кнопу “отмена” то отменим */}
+          <AppButton onPress={onCancel} color={THEME.DANGER_COLOR}>
             Отменить
           </AppButton>
           <AppButton onPress={saveHandler}>Сохранить</AppButton>
