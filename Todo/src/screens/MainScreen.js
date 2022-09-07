@@ -1,3 +1,5 @@
+// В этом компоненте мы показываем список наших todo
+
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, FlatList, Image, Dimensions } from 'react-native'
 import { AddTodo } from '../components/AddTodo'
@@ -28,7 +30,7 @@ export const MainScreen = ({ addTodo, todos, removeTodo, openTodo }) => {  // В
   )
   let content = (
     <View style={{ width: deviceWidth }}> {/*Dynamically set the width of the View depending on the width of the screen */}
-      <FlatList
+      <FlatList  // по умолчанию мы показываем этот FlatList куда передаем массив todos
         keyExtractor={item => item.id.toString()}
         data={todos}
         renderItem={({ item }) => (
@@ -38,14 +40,13 @@ export const MainScreen = ({ addTodo, todos, removeTodo, openTodo }) => {  // В
     </View>
   )
 
-  if (todos.length === 0) {
+  if (todos.length === 0) {         // Если в массиве todos ничего нет, то показваем картинку 
     content = (
       <View style={styles.imgWrap}>
-        <Image
+        <Image                     // компонент для отображения картинки
           style={styles.image}
           source={require('../../assets/no-items.png')}
         />
-
       </View>
     )
   }
