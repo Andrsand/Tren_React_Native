@@ -86,7 +86,7 @@ export default function App() {
     />
   )
 
-  if (todoId) {                  // Если todoId != null т.е изменяется стейт setTodoId, тогда в переменную content передаем компонент TodoScreen.
+  if (todoId) {                  // Если todoId != null т.е изменяется стейт setTodoId, тогда в переменную content передаем компонент TodoScreen 
     const selectedTodo = todos.find(todo => todo.id === todoId) //метод find ищет todo который находится в массиве todos и затем сравниваем id найденного todo со значением todoId. И тогда в selectedTodo попадает тот todo у которого id === выбранному.
     content = (
       <TodoScreen
