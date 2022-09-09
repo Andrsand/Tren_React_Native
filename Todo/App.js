@@ -69,7 +69,7 @@ export default function App() {
     setTodos(old =>
       old.map(todo => {            // на каждой итерации принимаем объект todo и сравниваем:
         if (todo.id === id) {      // если todo.id === id переданному нами из скрина - то мы точно работаем с тем todo которое хотели изменить.
-          todo.title = title       // поэтому говоримЁ что todo.title будет равен title из модального окна. 
+          todo.title = title       // поэтому говорим что todo.title будет равен title из модального окна. 
         }
         return todo                // на каждой итерации мы всеравно вернем todo но если id совпадают, то мы изменим нужный todo. 
       })
