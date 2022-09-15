@@ -7,37 +7,38 @@ import { todoReducer } from './todoReducer'
 
 export const TodoState = ({ children }) => {
   const initialState = {
-    todos: [{ id: '1', title: 'Выучить React Native' }]
+    todos: [],
+    loading: false // если идет загрузка то мы говорим компоненту, чтобы он реагировал соответсвующе 
   }
   const { changeScreen } = useContext(ScreenContext)
   const [state, dispatch] = useReducer(todoReducer, initialState)
-  
-  const addTodo = title => dispatch({ type: ADD_TODO, title})
+
+  const addTodo = title => dispatch({ type: ADD_TODO, title })
 
   const removeTodo = id => {
     const todo = state.todos.find(t => t.id === id)
     Alert.alert(
-          'Удаление элемента',
-          `Вы уверены, что хотите удалить "${todo.title}"?`,
-          [
-            {
-              text: 'Отмена',
-              style: 'cancel'
-            },
-            {
-              text: 'Удалить',
-              style: 'destructive',
-              onPress: () => {
-                changeScreen(null)
-                dispatch({type: REMOVE_TODO, id})
-              }
-            }
-          ],
-          { cancelable: false }
-        )
-   
+      'Удаление элемента',
+      `Вы уверены, что хотите удалить "${todo.title}"?`,
+      [
+        {
+          text: 'Отмена',
+          style: 'cancel'
+        },
+        {
+          text: 'Удалить',
+          style: 'destructive',
+          onPress: () => {
+            changeScreen(null)
+            dispatch({ type: REMOVE_TODO, id })
+          }
+        }
+      ],
+      { cancelable: false }
+    )
+
   }
-  const updateTodo = (id, title) => dispatch({ type: UPDATE_TODO, id, title})
+  const updateTodo = (id, title) => dispatch({ type: UPDATE_TODO, id, title })
 
   return (
     <TodoContext.Provider
