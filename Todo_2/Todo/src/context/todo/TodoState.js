@@ -8,7 +8,8 @@ import { todoReducer } from './todoReducer'
 export const TodoState = ({ children }) => {
   const initialState = {
     todos: [],
-    loading: false // если идет загрузка то мы говорим компоненту, чтобы он реагировал соответсвующе 
+    loading: false, // если идет загрузка то мы говорим компоненту, чтобы он реагировал соответсвующе 
+    error: null
   }
   const { changeScreen } = useContext(ScreenContext)
   const [state, dispatch] = useReducer(todoReducer, initialState)
