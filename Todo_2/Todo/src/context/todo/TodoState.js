@@ -15,7 +15,10 @@ export const TodoState = ({ children }) => {
   const { changeScreen } = useContext(ScreenContext)
   const [state, dispatch] = useReducer(todoReducer, initialState)
 
-  const addTodo = title => dispatch({ type: ADD_TODO, title })
+  const addTodo = title => {
+    fetch('https://rn-todo-app-db82f-default-rtdb.firebaseio.com/todos.json') // подключаемся к серверу с базой данных. Работаем с массивом todos используя json.
+    dispatch({ type: ADD_TODO, title })
+  }
 
   const removeTodo = id => {
     const todo = state.todos.find(t => t.id === id)
