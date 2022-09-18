@@ -15,9 +15,17 @@ export const TodoState = ({ children }) => {
   const { changeScreen } = useContext(ScreenContext)
   const [state, dispatch] = useReducer(todoReducer, initialState)
 
-  const addTodo = title => {
-    fetch('https://rn-todo-app-db82f-default-rtdb.firebaseio.com/todos.json') // подключаемся к серверу с базой данных. Работаем с массивом todos используя json.
-    dispatch({ type: ADD_TODO, title })
+  const addTodo = async title => {
+    const response = await fetch('https://rn-todo-app-db82f-default-rtdb.firebaseio.com/todos.json',  // подключаемся к серверу с базой данных. Работаем с массивом todos используя json.
+      {
+        method: 'POST',  // метод создания объекта на сервере
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title })       // приводим title к строке
+      }
+    )
+    const data = await response.json()    // ответ сервера
+    console.log('ID', data.name)
+    dispatch({ type: ADD_TODO, title, id: data.name })
   }
 
   const removeTodo = id => {
