@@ -52,6 +52,14 @@ export const TodoState = ({ children }) => {
 
   }
 
+  const fetchTodos = async () => {
+    const response = await fetch('https://rn-todo-app-db82f-default-rtdb.firebaseio.com/todos.json', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    })
+    const data = await response.json()
+    console.log('Date', data)
+  }
 
   const updateTodo = (id, title) => dispatch({ type: UPDATE_TODO, id, title })
 
@@ -69,9 +77,12 @@ export const TodoState = ({ children }) => {
     <TodoContext.Provider
       value={{
         todos: state.todos,
+        loading: state.loading,
+        error: state.error,
         addTodo,
         removeTodo,
-        updateTodo
+        updateTodo,
+        fetchTodos
       }}
     >
       {children}
