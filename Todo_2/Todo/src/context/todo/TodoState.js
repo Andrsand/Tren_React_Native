@@ -1,7 +1,7 @@
 import React, { useReducer, useContext } from 'react'
 import { Alert } from 'react-native'
 import { ScreenContext } from '../screen/screenContext'
-import { ADD_TODO, CLEAR_ERROR, HIDE_LOADER, REMOVE_TODO, SHOW_ERROR, SHOW_LOADER, UPDATE_TODO } from '../types'
+import { ADD_TODO, CLEAR_ERROR, FETCH_TODOS, HIDE_LOADER, REMOVE_TODO, SHOW_ERROR, SHOW_LOADER, UPDATE_TODO } from '../types'
 import { TodoContext } from './todoContext'
 import { todoReducer } from './todoReducer'
 
@@ -58,7 +58,9 @@ export const TodoState = ({ children }) => {
       headers: { 'Content-Type': 'application/json' }
     })
     const data = await response.json()
-    console.log('Date', data)
+    console.log('Fetch date', data)
+    const todos = Object.keys(data).map(key => ({ ...data[key], id: key }))
+    setTimeout(() => dispatch({ type: FETCH_TODOS, todos }), 5000)
   }
 
   const updateTodo = (id, title) => dispatch({ type: UPDATE_TODO, id, title })
