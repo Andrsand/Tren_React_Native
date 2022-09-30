@@ -53,6 +53,7 @@ export const TodoState = ({ children }) => {
   }
 
   const fetchTodos = async () => {
+    showLoader() // вызываем метод showloader чтобы был виден индикатор загрузки
     const response = await fetch('https://rn-todo-app-db82f-default-rtdb.firebaseio.com/todos.json', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
@@ -60,7 +61,8 @@ export const TodoState = ({ children }) => {
     const data = await response.json()
     console.log('Fetch date', data)
     const todos = Object.keys(data).map(key => ({ ...data[key], id: key }))
-    setTimeout(() => dispatch({ type: FETCH_TODOS, todos }), 5000)
+    dispatch({ type: FETCH_TODOS, todos })
+    // hideLoader() // когда прилетят данные с сервера - вызываем метод hideLoader
   }
 
   const updateTodo = (id, title) => dispatch({ type: UPDATE_TODO, id, title })
