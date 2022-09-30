@@ -2,9 +2,11 @@ import React, { useState, useEffect, useContext, useCallback } from 'react'
 import { StyleSheet, View, FlatList, Image, Dimensions } from 'react-native'
 import { AddTodo } from '../components/AddTodo'
 import { Todo } from '../components/Todo'
+import { AppLoader } from '../components/ui/AppLoader'
 import { ScreenContext } from '../context/screen/screenContext'
 import { TodoContext } from '../context/todo/todoContext'
 import { THEME } from '../theme'
+
 
 export const MainScreen = () => {
   const { addTodo, todos, removeTodo, fetchTodos, loading, error } = useContext(TodoContext)
@@ -34,6 +36,11 @@ export const MainScreen = () => {
   }
 
   )
+
+  if (loading) {
+    return <AppLoader /> // если происходит loading то возвращаем компонент AppLoader
+  }
+
   let content = (
     <View style={{ width: deviceWidth }}> {/*Dynamically set the width of the View depending on the width of the screen */}
       <FlatList
