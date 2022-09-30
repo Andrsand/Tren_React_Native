@@ -62,7 +62,7 @@ export const TodoState = ({ children }) => {
     console.log('Fetch date', data)
     const todos = Object.keys(data).map(key => ({ ...data[key], id: key }))
     dispatch({ type: FETCH_TODOS, todos })
-    // hideLoader() // когда прилетят данные с сервера - вызываем метод hideLoader
+    hideLoader() // когда прилетят данные с сервера - вызываем метод hideLoader
   }
 
   const updateTodo = (id, title) => dispatch({ type: UPDATE_TODO, id, title })
