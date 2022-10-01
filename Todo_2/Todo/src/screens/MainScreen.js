@@ -3,6 +3,7 @@ import { StyleSheet, View, FlatList, Image, Dimensions } from 'react-native'
 import { AddTodo } from '../components/AddTodo'
 import { Todo } from '../components/Todo'
 import { AppLoader } from '../components/ui/AppLoader'
+import { AppText } from '../components/ui/AppText'
 import { ScreenContext } from '../context/screen/screenContext'
 import { TodoContext } from '../context/todo/todoContext'
 import { THEME } from '../theme'
@@ -39,6 +40,14 @@ export const MainScreen = () => {
 
   if (loading) {
     return <AppLoader /> // если происходит loading то возвращаем компонент AppLoader
+  }
+
+  if (error) {
+    return (
+      <View style={styles.center}>
+        <AppText style={styles.error}>{error}</AppText>
+      </View>
+    )
   }
 
   let content = (

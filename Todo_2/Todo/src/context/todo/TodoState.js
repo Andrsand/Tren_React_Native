@@ -54,15 +54,22 @@ export const TodoState = ({ children }) => {
 
   const fetchTodos = async () => {
     showLoader() // вызываем метод showloader чтобы был виден индикатор загрузки
-    const response = await fetch('https://rn-todo-app-db82f-default-rtdb.firebaseio.com/todos.json', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-    })
-    const data = await response.json()
-    console.log('Fetch date', data)
-    const todos = Object.keys(data).map(key => ({ ...data[key], id: key }))
-    dispatch({ type: FETCH_TODOS, todos })
-    hideLoader() // когда прилетят данные с сервера - вызываем метод hideLoader
+    clearError() // очистка ошибки перед тем как продолжить грузить данные
+    try {
+      const response = await fetch('https://rn-todo-app-db82f-default-rtdb.firebaseio.com/todos.jso', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      const data = await response.json()
+      console.log('Fetch date', data)
+      const todos = Object.keys(data).map(key => ({ ...data[key], id: key }))
+      dispatch({ type: FETCH_TODOS, todos })
+    } catch (e) {
+      showError('Что-то пошло не так...')
+      console.log(e)
+    } finally {
+      hideLoader() // когда прилетят данные с сервера - вызываем метод hideLoader
+    }
   }
 
   const updateTodo = (id, title) => dispatch({ type: UPDATE_TODO, id, title })
