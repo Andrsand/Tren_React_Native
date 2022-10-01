@@ -56,7 +56,7 @@ export const TodoState = ({ children }) => {
     showLoader() // вызываем метод showloader чтобы был виден индикатор загрузки
     clearError() // очистка ошибки перед тем как продолжить грузить данные
     try {
-      const response = await fetch('https://rn-todo-app-db82f-default-rtdb.firebaseio.com/todos.jso', {
+      const response = await fetch('https://rn-todo-app-db82f-default-rtdb.firebaseio.com/todos.json', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       })
