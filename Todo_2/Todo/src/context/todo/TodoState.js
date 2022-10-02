@@ -72,7 +72,20 @@ export const TodoState = ({ children }) => {
     }
   }
 
-  const updateTodo = (id, title) => dispatch({ type: UPDATE_TODO, id, title })
+  const updateTodo = async (id, title) => {        // метод изменения todo
+    clearError()
+    try {
+      await fetch(`https://rn-todo-app-db82f-default-rtdb.firebaseio.com/todos/${id}.json`, {    // ${id} - для указания по какому id  изменяем элемент в Firebase
+        method: 'PATCH', // метод для изменения только title элемента
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title })
+      })
+      dispatch({ type: UPDATE_TODO, id, title })
+    } catch (e) {
+      showError('Что-то пошло не так...')
+      console.log(e)
+    }
+  }
 
   // эти функции ￬ - вспомогательные и приватные для стейта ￪ TodoState
 
